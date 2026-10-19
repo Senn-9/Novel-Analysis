@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Choose a page</title>
+	<style>
+		:root {
+			--ink: #241b2f;
+			--muted: #776b83;
+			--surface: #fbf9fd;
+			--line: #e7dfee;
+			--purple: #7751b8;
+			--purple-dark: #56338f;
+			--purple-soft: #eee7f8;
+		}
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			min-height: 100vh;
+			background: var(--surface);
+			color: var(--ink);
+			font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+		}
+		main {
+			display: grid;
+			min-height: 100vh;
+			place-items: center;
+			padding: 32px 20px;
+		}
+		.wrapper { width: min(100%, 760px); }
+		.eyebrow {
+			margin: 0 0 20px;
+			color: var(--purple);
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: .18em;
+			text-transform: uppercase;
+		}
+		h1 {
+			max-width: 620px;
+			margin: 0;
+			font-size: clamp(42px, 8vw, 76px);
+			font-weight: 650;
+			letter-spacing: -.065em;
+			line-height: .98;
+		}
+		.intro {
+			max-width: 440px;
+			margin: 24px 0 44px;
+			color: var(--muted);
+			font-size: 17px;
+			line-height: 1.6;
+		}
+		.pages { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+		.page-link {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			min-height: 150px;
+			padding: 24px;
+			border: 1px solid var(--line);
+			border-radius: 18px;
+			background: #fff;
+			color: var(--ink);
+			text-decoration: none;
+			transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+		}
+		.page-link:hover, .page-link:focus-visible {
+			border-color: var(--purple);
+			box-shadow: 0 14px 32px #56338f1a;
+			outline: none;
+			transform: translateY(-3px);
+		}
+		.page-name { font-size: 28px; font-weight: 650; letter-spacing: -.04em; }
+		.arrow {
+			display: grid;
+			width: 38px;
+			height: 38px;
+			place-items: center;
+			border-radius: 50%;
+			background: var(--purple-soft);
+			color: var(--purple-dark);
+			font-size: 20px;
+		}
+		@media (max-width: 560px) {
+			.pages { grid-template-columns: 1fr; }
+			.page-link { min-height: 110px; }
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<div class="wrapper">
+			<p class="eyebrow">Welcome</p>
+			<h1>Choose a page<br>to explore.</h1>
+			<p class="intro">A quiet starting point for two distinct spaces. Select a name below to continue.</p>
+			<nav class="pages" aria-label="Pages">
+				<a class="page-link" href="./Estrada/index.html">
+					<span class="page-name">Estrada</span>
+					<span class="arrow" aria-hidden="true">↗</span>
+				</a>
+				<a class="page-link" href="./Pauler/index.html">
+					<span class="page-name">Pauler</span>
+					<span class="arrow" aria-hidden="true">↗</span>
+				</a>
+			</nav>
+		</div>
+	</main>
+</body>
+</html>

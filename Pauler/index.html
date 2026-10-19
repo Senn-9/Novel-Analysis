@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Pauler - A serious little bookstore</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						ink: '#3b2732',
+						paper: '#fff7f8',
+						acid: '#f7c8d1',
+						tomato: '#e8a5b0',
+						cobalt: '#bd7f8b'
+					},
+					fontFamily: {
+						display: ['Arial Black', 'Arial', 'sans-serif'],
+						mono: ['Courier New', 'monospace']
+					}
+				}
+			}
+		}
+	</script>
+	<style>
+		:root { --ink: #3b2732; --paper: #fff7f8; --acid: #f7c8d1; --tomato: #e8a5b0; --cobalt: #bd7f8b; }
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Courier New', monospace; }
+		.display { font-family: 'Arial Black', Arial, sans-serif; letter-spacing: -0.06em; }
+		.hard-shadow { box-shadow: 8px 8px 0 var(--ink); }
+		.hard-shadow-sm { box-shadow: 5px 5px 0 var(--ink); }
+		.book-cover { transition: transform .16s ease, box-shadow .16s ease; overflow: hidden; }
+		.book-card:hover .book-cover { transform: translate(-3px, -3px) rotate(-1deg); box-shadow: 8px 8px 0 var(--ink); }
+		.marquee { overflow: hidden; white-space: nowrap; border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+		.marquee span { display: inline-block; animation: ticker 22s linear infinite; }
+		@keyframes ticker { to { transform: translateX(-50%); } }
+		.grain { background-image: radial-gradient(#3b2732 0.7px, transparent 0.7px); background-size: 9px 9px; opacity: .05; pointer-events: none; }
+		.filter-button.active { background: var(--ink); color: var(--acid); }
+		@media (max-width: 640px) { .hard-shadow { box-shadow: 5px 5px 0 var(--ink); } }
+	</style>
+</head>
+<body>
+	<div class="grain fixed inset-0 z-50"></div>
+
+	<header class="relative z-10 border-b-[3px] border-ink bg-acid">
+		<nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 border-x-[3px] border-ink px-4 py-4 sm:px-6">
+			<a href="#top" class="display text-2xl leading-none sm:text-3xl">Pauler<span class="text-tomato">.</span></a>
+			<div class="hidden items-center gap-7 text-xs font-bold uppercase tracking-[.16em] md:flex">
+				<a href="#catalog" class="hover:underline">Browse</a>
+				<a href="#manifesto" class="hover:underline">Our angle</a>
+				<a href="#footer" class="hover:underline">Contact</a>
+			</div>
+			<a href="#catalog" class="hard-shadow-sm border-[3px] border-ink bg-paper px-3 py-2 text-xs font-bold uppercase tracking-wider transition hover:translate-x-1 hover:translate-y-1 hover:shadow-none">Read on</a>
+		</nav>
+	</header>
+
+	<main id="top" class="relative z-10 mx-auto max-w-7xl border-x-[3px] border-ink">
+		<section class="grid min-h-[560px] grid-cols-1 border-b-[3px] border-ink lg:grid-cols-[1.25fr_.75fr]">
+			<div class="flex flex-col justify-between border-b-[3px] border-ink bg-tomato p-5 sm:p-8 lg:border-b-0 lg:border-r-[3px]">
+				<div class="flex items-start justify-between text-xs font-bold uppercase tracking-[.15em]"><span>Independent bookseller</span><span>Est. 2024</span></div>
+				<div>
+					<p class="mb-5 inline-block border-[3px] border-ink bg-acid px-3 py-2 text-xs font-bold uppercase tracking-widest hard-shadow-sm">Books with a pulse</p>
+					<h1 class="display max-w-4xl text-[clamp(4.2rem,12vw,10.8rem)] uppercase leading-[.78]">Read<br><span class="text-paper">loud.</span></h1>
+				</div>
+				<div class="mt-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+					<p class="max-w-sm text-sm font-bold leading-relaxed">A tightly edited shelf of difficult, dazzling, unforgettable books. No beige recommendations. No polite small talk.</p>
+					<a href="#catalog" class="display inline-block w-fit border-[3px] border-ink bg-cobalt px-4 py-4 text-base uppercase text-paper hard-shadow-sm transition hover:translate-x-1 hover:translate-y-1 hover:shadow-none">Shop the shelf <span aria-hidden="true">-></span></a>
+				</div>
+			</div>
+			<div class="flex flex-col justify-between bg-paper p-5 sm:p-8">
+				<div class="flex justify-between border-b-[3px] border-ink pb-3 text-xs font-bold uppercase"><span>Issue no. 07</span><span>Vol. 01 / 2026</span></div>
+				<div class="my-10 rotate-[-3deg] border-[3px] border-ink bg-cobalt p-6 text-paper hard-shadow sm:p-8">
+					<p class="mb-12 text-xs font-bold uppercase tracking-[.2em]">This month's shelf</p>
+					<p class="display text-5xl uppercase leading-[.86] sm:text-7xl">Old<br>stories.<br><span class="text-acid">New<br>bruise.</span></p>
+					<div class="mt-12 flex items-end justify-between border-t-[3px] border-paper pt-3 text-xs font-bold uppercase"><span>7 selections</span><span>100% worth it</span></div>
+				</div>
+				<p class="max-w-xs text-xs font-bold uppercase leading-relaxed">For the curious, the stubborn, and anyone who still dog-ears a page.</p>
+			</div>
+		</section>
+
+		<div class="marquee bg-ink py-3 text-sm font-bold uppercase text-acid"><span>New arrivals / unreasonable opinions / books that follow you home / New arrivals / unreasonable opinions / books that follow you home / </span></div>
+
+		<section id="catalog" class="bg-paper p-5 sm:p-8">
+			<div class="mb-8 flex flex-col justify-between gap-5 border-b-[3px] border-ink pb-6 md:flex-row md:items-end">
+				<div><p class="mb-2 text-xs font-bold uppercase tracking-[.2em]">The catalog / 001-007</p><h2 class="display text-5xl uppercase leading-none sm:text-7xl">The shelf</h2></div>
+				<div class="flex flex-col gap-3 sm:items-end">
+					<label for="search" class="text-xs font-bold uppercase">Find a title</label>
+					<input id="search" type="search" placeholder="TYPE TO SEARCH..." class="w-full border-[3px] border-ink bg-white px-3 py-3 text-xs font-bold outline-none placeholder:text-ink/50 focus:bg-acid sm:w-72" />
+				</div>
+			</div>
+			<div id="filters" class="mb-8 flex flex-wrap gap-2">
+				<button class="filter-button active border-[3px] border-ink px-3 py-2 text-xs font-bold uppercase" data-filter="all">All books</button>
+				<button class="filter-button border-[3px] border-ink px-3 py-2 text-xs font-bold uppercase" data-filter="classic">Classics</button>
+				<button class="filter-button border-[3px] border-ink px-3 py-2 text-xs font-bold uppercase" data-filter="epic">Epic</button>
+				<button class="filter-button border-[3px] border-ink px-3 py-2 text-xs font-bold uppercase" data-filter="modern">Modern</button>
+			</div>
+			<div id="bookGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
+			<p id="emptyState" class="hidden border-[3px] border-ink bg-acid p-6 text-center font-bold uppercase">No books found. Try a different phrase.</p>
+		</section>
+
+		<section id="manifesto" class="grid border-t-[3px] border-ink lg:grid-cols-[.7fr_1.3fr]">
+			<div class="border-b-[3px] border-ink bg-acid p-5 sm:p-8 lg:border-b-0 lg:border-r-[3px]"><p class="text-xs font-bold uppercase tracking-[.2em]">A small manifesto</p><p class="display mt-20 text-6xl uppercase leading-[.82] sm:text-8xl">Less<br>noise.<br><span class="text-tomato">More<br>book.</span></p></div>
+			<div class="flex flex-col justify-between gap-10 bg-cobalt p-5 text-paper sm:p-8"><p class="max-w-2xl text-2xl font-bold leading-tight sm:text-4xl">We believe a book should leave a mark. On your desk, in your head, possibly on your entire personality.</p><div class="grid grid-cols-2 gap-6 border-t-[3px] border-paper pt-5 text-xs font-bold uppercase sm:grid-cols-3"><span>01 / Curated</span><span>02 / Unfussy</span><span>03 / Delivered</span></div></div>
+		</section>
+	</main>
+
+	<footer id="footer" class="relative z-10 border-t-[3px] border-ink bg-ink text-paper">
+		<div class="mx-auto grid max-w-7xl border-x-[3px] border-ink sm:grid-cols-2"><div class="border-b-[3px] border-paper p-5 sm:border-b-0 sm:border-r-[3px] sm:p-8"><p class="display text-4xl">Pauler<span class="text-tomato">.</span></p><p class="mt-12 max-w-xs text-xs font-bold uppercase leading-relaxed">A bookstore for books that refuse to sit quietly.</p></div><div class="p-5 sm:p-8"><p class="mb-4 text-xs font-bold uppercase tracking-[.2em] text-acid">Get the good stuff</p><div class="flex max-w-md border-[3px] border-paper"><input type="email" placeholder="YOUR EMAIL" class="min-w-0 flex-1 bg-transparent px-3 py-3 text-xs font-bold outline-none placeholder:text-paper/60" /><button class="bg-acid px-4 text-xs font-bold uppercase text-ink">Join</button></div><p class="mt-5 text-xs uppercase">© 2026 Pauler — Make room for a book.</p></div></div>
+	</footer>
+
+	<script>
+		const books = [
+			{ title: 'The Panchatantra', author: 'Vishnu Sharma', year: 'c. 300 BCE', type: 'classic', color: 'acid', number: '01', blurb: 'Five books of animal fables, sharp politics, and lessons that bite back.' },
+			{ title: 'The Mahabharata', author: 'Vyasa', year: 'c. 400 BCE', type: 'epic', color: 'tomato', number: '02', blurb: 'A family argument expands into a universe. Duty, desire, war, and the cost of both.' },
+			{ title: 'The Song of Roland', author: 'Anonymous', year: 'c. 1100', type: 'epic', color: 'cobalt', number: '03', blurb: 'A medieval war song with an enormous sense of loyalty and an even larger horn.' },
+			{ title: 'Sonnet CCXCII / Sonnet XVIII', author: 'Petrarch & Shakespeare', year: '14th / 16th c.', type: 'classic', color: 'paper', number: '04', blurb: 'Two sonnets. Two centuries. One stubborn attempt to make love permanent.' },
+			{ title: 'Utopia', author: 'Thomas More', year: '1516', type: 'classic', color: 'acid', number: '05', blurb: 'An imagined island, a very real political question: who gets to call a place perfect?' },
+			{ title: 'The Grapes of Wrath', author: 'John Steinbeck', year: '1939', type: 'modern', color: 'tomato', number: '06', blurb: 'Dust, displacement, family, and a stubborn belief in the collective good.' },
+			{ title: 'Fish-Hair Woman', author: 'Merlinda Bobis', year: '2012', type: 'modern', color: 'cobalt', number: '07', blurb: 'A lush, haunted story of memory, migration, and the things a river remembers.' }
+		];
+		let activeFilter = 'all';
+		const grid = document.getElementById('bookGrid');
+		const emptyState = document.getElementById('emptyState');
+		const search = document.getElementById('search');
+		function renderBooks() {
+			const query = search.value.toLowerCase();
+			const visible = books.filter(book => (activeFilter === 'all' || book.type === activeFilter) && `${book.title} ${book.author}`.toLowerCase().includes(query));
+			grid.innerHTML = visible.map(book => `
+				<article class="book-card group min-w-0" data-type="${book.type}">
+					<div class="book-cover relative flex min-h-[315px] flex-col justify-between border-[3px] border-ink bg-${book.color} p-4 hard-shadow-sm">
+						<div class="flex justify-between text-xs font-bold uppercase"><span>${book.number} / 07</span><span>${book.year}</span></div>
+						<div class="min-w-0"><p class="display max-w-full break-words text-[clamp(2.2rem,5vw,3.35rem)] uppercase leading-[.86] ${book.color === 'cobalt' ? 'text-paper' : 'text-ink'}">${book.title}</p><div class="mt-8 h-4 w-20 border-y-[3px] border-ink"></div></div>
+						<span class="text-xs font-bold uppercase">PAULER EDITION</span>
+					</div>
+					<div class="pt-4"><div><h3 class="display text-xl uppercase leading-none">${book.title}</h3><p class="mt-2 text-xs font-bold uppercase">${book.author}</p></div><p class="mt-4 text-xs leading-relaxed">${book.blurb}</p><button class="read-button mt-5 w-full border-[3px] border-ink bg-white px-3 py-3 text-xs font-bold uppercase transition hover:bg-acid" data-title="${book.title}">Read <span aria-hidden="true">-></span></button></div>
+				</article>`).join('');
+			emptyState.classList.toggle('hidden', visible.length > 0);
+			document.querySelectorAll('.read-button').forEach(button => button.addEventListener('click', () => { button.textContent = `Opening: ${button.dataset.title}`; button.classList.add('bg-acid'); }));
+		}
+
+		document.querySelectorAll('.filter-button').forEach(button => button.addEventListener('click', () => { document.querySelector('.filter-button.active').classList.remove('active'); button.classList.add('active'); activeFilter = button.dataset.filter; renderBooks(); }));
+		search.addEventListener('input', renderBooks);
+		renderBooks();
+	</script>
+</body>
+</html>
